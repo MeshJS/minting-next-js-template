@@ -1,4 +1,3 @@
-import type { UTxO } from "@martifylabs/mesh";
 import axios from "axios";
 
 const instance = axios.create({
@@ -6,7 +5,7 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-export async function post(route: string, body = {}) {
+export async function post(route, body = {}) {
   return await instance
     .post(`${route}`, body)
     .then(({ data }) => {
@@ -17,19 +16,11 @@ export async function post(route: string, body = {}) {
     });
 }
 
-export async function createTransaction(
-  recipientAddress: string,
-  utxos: UTxO[]
-) {
-  console.log(111, recipientAddress, utxos);
+export async function createTransaction(recipientAddress, utxos) {
   return await post(`create-mining-transaction`, { recipientAddress, utxos });
 }
 
-export async function signTransaction(
-  assetName: string,
-  signedTx: string,
-  originalMetadata: string
-) {
+export async function signTransaction(assetName, signedTx, originalMetadata) {
   return await post(`sign-transaction`, {
     assetName,
     signedTx,

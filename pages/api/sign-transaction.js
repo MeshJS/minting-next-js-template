@@ -1,17 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { AppWallet, Transaction, BlockfrostProvider } from "@martifylabs/mesh";
 import { demoMnemonic } from "../../config/wallet";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req, res) {
   const assetName = req.body.assetName;
   const signedTx = req.body.signedTx;
   const originalMetadata = req.body.originalMetadata;
 
   const blockchainProvider = new BlockfrostProvider(
-    process.env.NEXT_PUBLIC_BLOCKFROST_API_KEY!
+    process.env.NEXT_PUBLIC_BLOCKFROST_API_KEY
   );
 
   const appWallet = new AppWallet({

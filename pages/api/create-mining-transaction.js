@@ -1,4 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import {
   AppWallet,
   ForgeScript,
@@ -13,15 +12,12 @@ import {
   costLovelace,
 } from "../../config/mint";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req, res) {
   const recipientAddress = req.body.recipientAddress;
   const utxos = req.body.utxos;
 
   const blockchainProvider = new BlockfrostProvider(
-    process.env.NEXT_PUBLIC_BLOCKFROST_API_KEY!
+    process.env.NEXT_PUBLIC_BLOCKFROST_API_KEY
   );
 
   const appWallet = new AppWallet({
