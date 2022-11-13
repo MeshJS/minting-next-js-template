@@ -1,4 +1,4 @@
-import { AppWallet, Transaction, BlockfrostProvider } from "@martifylabs/mesh";
+import { AppWallet, Transaction, KoiosProvider } from "@martifylabs/mesh";
 import { demoMnemonic } from "../../config/wallet";
 
 export default async function handler(req, res) {
@@ -6,14 +6,12 @@ export default async function handler(req, res) {
   const signedTx = req.body.signedTx;
   const originalMetadata = req.body.originalMetadata;
 
-  const blockchainProvider = new BlockfrostProvider(
-    process.env.NEXT_PUBLIC_BLOCKFROST_API_KEY
-  );
+  const koios = new KoiosProvider("testnet");
 
   const appWallet = new AppWallet({
     networkId: 0,
-    fetcher: blockchainProvider,
-    submitter: blockchainProvider,
+    fetcher: koios,
+    submitter: koios,
     key: {
       type: "mnemonic",
       words: demoMnemonic,
@@ -21,7 +19,7 @@ export default async function handler(req, res) {
   });
 
   /**
-   * todo: Here you want to retrieve the `originalMetadata` from database with the `assetName`
+   * TODO: Here you want to retrieve the `originalMetadata` from database with the `assetName`
    */
 
   const signedOriginalTx = Transaction.writeMetadata(
