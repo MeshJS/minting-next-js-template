@@ -1,4 +1,4 @@
-import { AppWallet, Transaction, KoiosProvider } from "@martifylabs/mesh";
+import { AppWallet, Transaction, KoiosProvider } from "@meshsdk/core";
 import { demoMnemonic } from "../../config/wallet";
 
 export default async function handler(req, res) {

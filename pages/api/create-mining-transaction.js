@@ -4,7 +4,7 @@ import {
   Transaction,
   KoiosProvider,
   largestFirst,
-} from "@martifylabs/mesh";
+} from "@meshsdk/core";
 import { demoMnemonic } from "../../config/wallet";
 import {
   assetsMetadata,

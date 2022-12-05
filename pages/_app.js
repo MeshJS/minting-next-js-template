@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { MeshProvider } from "@martifylabs/mesh-react";
+import { MeshProvider } from "@meshsdk/react";
 
 function MyApp({ Component, pageProps }) {
   return (
