@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   const recipientAddress = req.body.recipientAddress;
   const utxos = req.body.utxos;
 
-  const blockchainProvider = new KoiosProvider("testnet");
+  const blockchainProvider = new KoiosProvider("preview");
 
   const appWallet = new AppWallet({
     networkId: 0,
